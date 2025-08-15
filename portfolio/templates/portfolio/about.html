@@ -1,0 +1,86 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+{% block title %}About Me - My Portfolio{% endblock %}
+{% block content %}
+<section id="about-container" class="fade-up">
+    <div id="profile-section" class="glass-card">
+        <img src="{% static 'portfolio/profile.png' %}" alt="Profile" id="profile-image">
+    </div>
+    <div id="details-section" class="glass-card">
+        <h2 class="section-title gradient-text">About Me</h2>
+        <p>{{ about_text }}</p>
+        <h3 class="sub-title">Skills</h3>
+        <p class="muted">Here are some of the skills I have acquired:</p>
+        <ul id="skills-list" class="fade-up">
+            {% for skill in skills %}
+                <li><i class="fas fa-code"></i> {{ skill }}</li>
+            {% empty %}
+                <li>No skills listed.</li>
+            {% endfor %}
+        </ul>
+        <section id="internship-container" class="fade-up">
+            <h2 class="section-title gradient-text">Internship</h2>
+            <div class="internship-card glass-card">
+                <h3 class="internship-title">Indian Tech Keys</h3>
+                <p class="internship-role">Full Stack Developer <span class="internship-duration">• 1 month</span></p>
+                <ul class="internship-list">
+                    <li>Completed hands-on training in full-stack web application development</li>
+                    <li>Developed web interfaces using frontend and backend technologies</li>
+                    <li>Gained experience in Python-based development and real-time application building</li>
+                    <li>Enhanced understanding of project workflows and team collaboration in a development environment</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="education-container" class="fade-up">
+            <h2 class="section-title gradient-text">Education</h2>
+            <div class="education-grid">
+                <div class="edu-card glass-card">
+                    <h3>Cambridge Institute of Technology<br><span class="edu-location">K R Puram</span></h3>
+                    <p class="edu-degree">BE Computer Science and Engineering</p>
+                    <p>2021-2025</p>
+                    <p class="edu-score">
+                        <i class="fas fa-star"></i> 8.74 CGPA&nbsp;/&nbsp;87.40%
+                    </p>
+                </div>
+                <div class="edu-card glass-card">
+                    <h3>Presidency PU College<br><span class="edu-location">Sira</span></h3>
+                    <p class="edu-degree">PCMB</p>
+                    <p>2019-2021</p>
+                    <p class="edu-score">
+                        <i class="fas fa-star"></i> 86.67%
+                    </p>
+                </div>
+                <div class="edu-card glass-card">
+                    <h3>The Presidency Public School<br><span class="edu-location">Sira</span></h3>
+                    <p class="edu-degree">Class X</p>
+                    <p>2019</p>
+                    <p class="edu-score">
+                        <i class="fas fa-star"></i> 74.67%
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <h3 class="section-title gradient-text">My Certifications</h3>
+        <div id="certifications-grid">
+            {% for cert in certifications %}
+                <article class="cert-card glass-card fade-up" data-tilt>
+                    <h4 class="card-title">{{ cert.name }}</h4>
+                    <p class="issued-by"><strong>Issued By:</strong> {{ cert.issued_by }}</p>
+                    {% if cert.description %}
+                        <p class="cert-description">{{ cert.description }}</p>
+                    {% endif %}
+                    {% if cert.certificate %}
+                        <a href="{{ cert.certificate.url }}" target="_blank" class="btn-secondary">View Certificate</a>
+                    {% else %}
+                        <p class="no-file">No certificate file available</p>
+                    {% endif %}
+                </article>
+            {% empty %}
+                <p>No certifications uploaded yet.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

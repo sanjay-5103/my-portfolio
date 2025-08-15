@@ -1,0 +1,22 @@
+{% extends 'portfolio/base.html' %}
+{% block title %}Projects - My Portfolio{% endblock %}
+
+{% block content %}
+<section class="fade-up">
+    <h1 class="page-title gradient-text">My Projects</h1>
+
+    <div id="projects-container">
+        {% for project in projects %}
+            <article class="project-card glass-card fade-up" data-tilt>
+                <h2 class="card-title">{{ project.title }}</h2>
+                <p class="card-text">{{ project.description }}</p>
+                {% if project.link %}
+                    <a href="{{ project.link }}" target="_blank" class="btn-secondary">View Project</a>
+                {% endif %}
+            </article>
+        {% empty %}
+            <p id="no-projects" class="muted">No projects yet.</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

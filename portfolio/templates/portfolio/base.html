@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}My Portfolio{% endblock %}</title>
+
+    
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'portfolio/style.css' %}?v=10" />
+</head>
+<body>
+    <!-- NAVBAR (sticky) -->
+    <nav id="navbar">
+        <div id="navbar-container">
+            <div id="logo">
+                <a href="{% url 'home' %}" class="gradient-text">Sanjay B</a>
+            </div>
+            <ul id="nav-links">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'projects' %}">Projects</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+            </ul>
+        </div>
+        <div id="nav-accent"></div>
+    </nav>
+
+    <!-- CONTENT WRAPPER -->
+    <main id="content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- FOOTER -->
+    <footer id="footer">
+        © {{ now|date:"Y" }} Sanjay B. All rights reserved.
+    </footer>
+
+    <!-- JS -->
+    <script src="{% static 'portfolio/script.js' %}?v=10"></script>
+</body>
+</html>

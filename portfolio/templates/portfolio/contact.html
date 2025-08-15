@@ -1,0 +1,17 @@
+{% extends 'portfolio/base.html' %}
+{% block title %}Contact - My Portfolio{% endblock %}
+
+{% block content %}
+<section class="contact-wrapper fade-up">
+    <form method="post" class="contact-form glass-card">
+        <h1 class="section-title gradient-text">Contact Me</h1>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn-primary">Send Message</button>
+    </form>
+</section>
+
+{% if success %}
+    <div class="notice success glass-card fade-up">Message sent successfully!</div>
+{% endif %}
+{% endblock %}

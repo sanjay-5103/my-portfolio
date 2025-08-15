@@ -1,0 +1,59 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+
+{% block title %}Home - My Portfolio{% endblock %}
+
+{% block content %}
+<!-- HERO SECTION -->
+<section id="hero">
+    <div class="hero-text">
+        <h1 class="gradient-text">Hi, I'm Sanjay</h1>
+        <p class="hero-role">Backend Developer & Machine Learning Enthusiast</p>
+        <p class="hero-tagline">I build impactful digital solutions with clean code & creative design.</p>
+        <div class="hero-buttons">
+            <a href="{% url 'projects' %}" class="btn-primary">View Projects</a>
+            <a href="{% url 'about' %}" class="btn-secondary">Learn More</a>
+        </div>
+    </div>
+    <div class="hero-img">
+        <img src="{% static 'portfolio/profile.png' %}" alt="Sanjay">
+    </div>
+</section>
+
+<!-- QUICK STATS -->
+<section id="stats">
+    <div class="stat">
+        <h2>3</h2>
+        <p>Projects Completed</p>
+    </div>
+    <div class="stat">
+        <h2>2</h2>
+        <p>Certifications</p>
+    </div>
+    <div class="stat">
+        <h2>0</h2>
+        <p>Years Experience</p>
+    </div>
+</section>
+
+<!-- FEATURED PROJECTS PREVIEW -->
+<section id="featured-projects">
+    <h2>Featured Projects</h2>
+    <div class="project-preview-container">
+        {% for project in projects|slice:":3" %}
+        <div class="project-preview-card">
+            <h3>{{ project.title }}</h3>
+            <p>{{ project.description|truncatewords:20 }}</p>
+            <a href="{% url 'projects' %}" class="btn-small">See More</a>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- CALL TO ACTION -->
+<section id="cta">
+    <h2>Let's work together</h2>
+    <p>Have an idea or project in mind? Let's create something amazing!</p>
+    <a href="{% url 'contact' %}" class="btn-primary">Contact Me</a>
+</section>
+{% endblock %}
